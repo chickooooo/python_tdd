@@ -1,0 +1,12 @@
+# cache
+__pycache__
+
+# environments
+env
+
+# coverage
+.coverage
+coverage.xml
+
+# sonar qube
+.scannerwork
