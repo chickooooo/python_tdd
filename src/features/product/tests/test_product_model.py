@@ -167,7 +167,7 @@ def test_product_with_spaced_name():
     assert product.name == "apple"
 
 
-def test_product_with_negative_rpice():
+def test_product_with_negative_price():
     """Raise ValidationError if product is created with
     negative value for 'price' field."""
 
