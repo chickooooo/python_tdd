@@ -31,6 +31,7 @@ from features.product.models.product import Product
 def test_product_without_id():
     """Raise ValidationError if product is created without 'id' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError):
         Product()  # type: ignore
 
@@ -39,6 +40,7 @@ def test_product_with_wrong_id_type():
     """Raise ValidationError if product is created with
     wrong type for 'id' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError):
         Product(
             id="1",
@@ -48,6 +50,7 @@ def test_product_with_wrong_id_type():
 def test_product_without_name():
     """Raise ValidationError if product is created without 'name' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError):
         Product(
             id=1,
@@ -58,6 +61,7 @@ def test_product_with_wrong_name_type():
     """Raise ValidationError if product is created with
     wrong type for 'name' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError):
         Product(
             id=1,
@@ -68,6 +72,7 @@ def test_product_with_wrong_name_type():
 def test_product_without_price():
     """Raise ValidationError if product is created without 'price' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError):
         Product(
             id=1,
@@ -79,6 +84,7 @@ def test_product_with_wrong_price_type():
     """Raise ValidationError if product is created with
     wrong type for 'price' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError):
         Product(
             id=1,
@@ -89,8 +95,9 @@ def test_product_with_wrong_price_type():
 
 def test_product_with_negative_id():
     """Raise ValidationError if product is created with
-    negative 'id' field."""
+    negative value for 'id' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError) as exc_info:
         Product(
             id=-1,
@@ -104,8 +111,9 @@ def test_product_with_negative_id():
 
 def test_product_with_zero_id():
     """Raise ValidationError if product is created with
-    zero 'id' field."""
+    zero value for 'id' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError) as exc_info:
         Product(
             id=0,
@@ -119,8 +127,9 @@ def test_product_with_zero_id():
 
 def test_product_with_empty_name():
     """Raise ValidationError if product is created with
-    empty 'name' field."""
+    empty value for 'name' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError) as exc_info:
         Product(
             id=1,
@@ -134,8 +143,9 @@ def test_product_with_empty_name():
 
 def test_product_with_less_char_name():
     """Raise ValidationError if product is created with
-    less than 5 characters 'name' field."""
+    less than 5 characters value for 'name' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError) as exc_info:
         Product(
             id=1,
@@ -159,8 +169,9 @@ def test_product_with_spaced_name():
 
 def test_product_with_negative_rpice():
     """Raise ValidationError if product is created with
-    negative 'price' field."""
+    negative value for 'price' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError) as exc_info:
         Product(
             id=1,
@@ -174,8 +185,9 @@ def test_product_with_negative_rpice():
 
 def test_product_with_zero_price():
     """Raise ValidationError if product is created with
-    zero 'price' field."""
+    zero value for 'price' field."""
 
+    # verify ValidationError raised
     with pytest.raises(ValidationError) as exc_info:
         Product(
             id=1,
