@@ -15,8 +15,6 @@ class SQLService[T](ABC):
             bool: True on successful creation else False.
         """
 
-        pass
-
     @abstractmethod
     def read_single(self, query_data: dict) -> T | None:
         """Read and return a single record from database.
@@ -30,8 +28,6 @@ class SQLService[T](ABC):
             T | None: Record if found else None.
         """
 
-        pass
-
     @abstractmethod
     def read_multiple(self, query_data: dict) -> list[T]:
         """Read and return multiple records from database.
@@ -44,8 +40,6 @@ class SQLService[T](ABC):
         Returns:
             list[T]: List of records if found else [].
         """
-
-        pass
 
     @abstractmethod
     def update(self, query_data: dict, updated_data: dict) -> bool:
@@ -64,8 +58,6 @@ class SQLService[T](ABC):
                   matching the query_data.
         """
 
-        pass
-
     @abstractmethod
     def delete(self, query_data: dict) -> bool:
         """Delete record(s) in database.
@@ -80,5 +72,3 @@ class SQLService[T](ABC):
                   Will return True if no record found in database
                   matching the query_data.
         """
-
-        pass
