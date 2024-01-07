@@ -3,16 +3,13 @@ from abc import ABC, abstractmethod
 
 class SQLService[T](ABC):
     @abstractmethod
-    def create(self, record: T) -> bool:
+    def create(self, record: T) -> None:
         """Create new record in database.
 
         Args:
             record (T): New record.
 
         Raises: SQLException.
-
-        Returns:
-            bool: True on successful creation else False.
         """
 
     @abstractmethod
@@ -42,7 +39,7 @@ class SQLService[T](ABC):
         """
 
     @abstractmethod
-    def update(self, query_data: dict, updated_data: dict) -> bool:
+    def update(self, query_data: dict, updated_data: dict) -> None:
         """Update record(s) in database.
 
         Args:
@@ -51,24 +48,14 @@ class SQLService[T](ABC):
             where key represents column name & value represents updated value.
 
         Raises: SQLException.
-
-        Returns:
-            bool: True on successful updation else False.
-                  Will return True if no record found in database
-                  matching the query_data.
         """
 
     @abstractmethod
-    def delete(self, query_data: dict) -> bool:
+    def delete(self, query_data: dict) -> None:
         """Delete record(s) in database.
 
         Args:
             query_data (dict): SQL query data in dict format.
 
         Raises: SQLException.
-
-        Returns:
-            bool: True on successful updation else False.
-                  Will return True if no record found in database
-                  matching the query_data.
         """

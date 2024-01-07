@@ -4,7 +4,7 @@
 
 - MySQLService should have a create() method
     -- with parameter record of type 'T'
-    -- with return type of 'bool'
+    -- with return type of 'None'
 
 - MySQLService should have a read_single() method
     -- with parameter query_data of type 'dict'
@@ -17,11 +17,11 @@
 - MySQLService should have a update() method
     -- with parameter query_data of type 'dict'
     -- with parameter updated_data of type 'dict'
-    -- with return type of 'bool'
+    -- with return type of 'None'
 
 - MySQLService should have a delete() method
     -- with parameter query_data of type 'dict'
-    -- with return type of 'bool'
+    -- with return type of 'None'
 
 - All methods of MySQLService are not implemented
 """
@@ -43,7 +43,7 @@ def test_mysql_service_type():
 def test_create_method():
     """MySQLService has an create() method with parameters:
     record: T
-    and return type of 'bool'.
+    and return type of 'None'.
     """
 
     # verify create method
@@ -59,7 +59,7 @@ def test_create_method():
 
     # verify method return type
     signature = inspect.signature(create_method)
-    assert signature.return_annotation is bool
+    assert signature.return_annotation is None
 
 
 def test_read_single_method():
@@ -110,7 +110,7 @@ def test_update_method():
     """MySQLService has an update() method with parameters:
     query_data: dict
     updated_data: dict
-    and return type of 'bool'.
+    and return type of 'None'.
     """
 
     # verify update method
@@ -128,13 +128,13 @@ def test_update_method():
 
     # verify method return type
     signature = inspect.signature(update_method)
-    assert signature.return_annotation is bool
+    assert signature.return_annotation is None
 
 
 def test_delete_method():
     """MySQLService has an delete() method with parameters:
     query_data: dict
-    and return type of 'bool'.
+    and return type of 'None'.
     """
 
     # verify delete method
@@ -150,7 +150,7 @@ def test_delete_method():
 
     # verify method return type
     signature = inspect.signature(delete_method)
-    assert signature.return_annotation is bool
+    assert signature.return_annotation is None
 
 
 def test_not_implemented():
