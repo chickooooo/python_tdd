@@ -23,14 +23,24 @@
     -- with parameter query_data of type 'dict'
     -- with return type of 'None'
 
-- All methods of MySQLService are not implemented
+- MySQLService methods are not implemented
+
+- create() method should raise TypeError if record is
+  not a valid model object.
+- create() method should raise SQLException if record with 'id'
+  is already present in database.
+- create() method should insert record in database if record with 'id'
+  is not present in database.
+- create() method should return None after insertion.
 """
 
 
 import inspect
 import pytest
+from core.services.sql_service.sql_exception import SQLException
 from core.services.sql_service.sql_service import SQLService
-from core.services.sql_service.mysql_service import MySQLService
+from core.services.sql_service.mysql_service import MySQLService, DATABASE
+from features.product.models.product import Product
 
 
 def test_mysql_service_type():
@@ -159,12 +169,6 @@ def test_not_implemented():
     # exception message
     EXC_MESSAGE: str = "Method hasn't been implemented yet."
 
-    # verify exception raised for create method
-    with pytest.raises(NotImplementedError) as exc_info:
-        MySQLService().create("abc")
-    # verify error message
-    assert EXC_MESSAGE == str(exc_info.value)
-
     # verify exception raised for read_single method
     with pytest.raises(NotImplementedError) as exc_info:
         MySQLService().read_single({})
@@ -188,3 +192,73 @@ def test_not_implemented():
         MySQLService().delete({})
     # verify error message
     assert EXC_MESSAGE == str(exc_info.value)
+
+
+# sql service object
+sql_service = MySQLService[Product]()
+
+
+def test_create_invalid_record():
+    """create() method should raise TypeError if record is
+    not a valid model object."""
+
+    # verify TypeError raised
+    with pytest.raises(TypeError) as exc_info:
+        sql_service.create("str")  # type: ignore
+
+    # verify error message
+    assert "'record' should be a valid model." in str(exc_info.value)
+
+
+def test_create_duplicate_id():
+    """create() method should raise SQLException if record with 'id'
+    is already present in database."""
+
+    # create product object
+    product = Product(
+        id=1,
+        name="apple",
+        price=7.99,
+    )
+
+    # verify SQLException raised
+    with pytest.raises(SQLException) as exc_info:
+        sql_service.create(product)
+
+    # verify error message
+    assert "duplicate id: 1" in str(exc_info.value)
+
+
+def test_create_insert_database():
+    """create() method should insert record in database if record with 'id'
+    is not present in database."""
+
+    # create product object
+    product = Product(
+        id=2,
+        name="apple",
+        price=8.99,
+    )
+
+    # add product to database
+    sql_service.create(product)
+
+    # verify added in database
+    assert {"id": 2, "name": "apple", "price": 8.99} in DATABASE
+
+
+def test_create_return_none():
+    """create() method should return None after insertion."""
+
+    # create product object
+    product = Product(
+        id=3,
+        name="papaya",
+        price=12.99,
+    )
+
+    # add product to database
+    result = sql_service.create(product)
+
+    # verify result
+    assert result is None

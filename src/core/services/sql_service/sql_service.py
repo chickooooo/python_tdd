@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 
 
 class SQLService[T](ABC):
+    """SQL service."""
+
     @abstractmethod
     def create(self, record: T) -> None:
         """Create new record in database.
