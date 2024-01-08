@@ -233,6 +233,9 @@ def test_create_insert_database():
     """create() method should insert record in database if record with 'id'
     is not present in database."""
 
+    # verify record not in database
+    assert {"id": 2, "name": "apple", "price": 8.99} not in DATABASE
+
     # create product object
     product = Product(
         id=2,
@@ -243,7 +246,7 @@ def test_create_insert_database():
     # add product to database
     sql_service.create(product)
 
-    # verify added in database
+    # verify record added in database
     assert {"id": 2, "name": "apple", "price": 8.99} in DATABASE
 
 
