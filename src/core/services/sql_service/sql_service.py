@@ -24,7 +24,7 @@ class SQLService[T](ABC):
         Raises: SQLException.
 
         Returns:
-            T | None: Record if found else None.
+            T | None: First found record else None.
         """
 
     @abstractmethod
@@ -41,13 +41,11 @@ class SQLService[T](ABC):
         """
 
     @abstractmethod
-    def update(self, query_data: dict, updated_data: dict) -> None:
-        """Update record(s) in database.
+    def update(self, updated_record: T) -> None:
+        """Update record in database.
 
         Args:
-            query_data (dict): SQL query data in dict format.
-            updated_data (dict): Updated data in dict format,
-            where key represents column name & value represents updated value.
+            updated_record (dict): Updated record.
 
         Raises: SQLException.
         """

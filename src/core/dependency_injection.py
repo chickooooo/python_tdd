@@ -5,7 +5,12 @@ from core.services.sql_service.sql_service import SQLService
 from core.services.sql_service.mysql_service import MySQLService
 
 from features.product.models.product import Product
+from features.product.usecases.product_crud_usecase import ProductCrudUsecase
 
 
-# product sql service
-product_sql_service: SQLService = MySQLService[Product]()
+# services
+__product_sql_service: SQLService = MySQLService[Product]()
+
+
+# usecases
+product_crud_usecase = ProductCrudUsecase(__product_sql_service)

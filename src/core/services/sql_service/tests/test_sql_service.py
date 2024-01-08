@@ -120,7 +120,7 @@ def test_read_multiple_method():
 def test_update_method():
     """SQLService has an update() method with parameters:
     query_data: dict
-    updated_data: dict
+    updated_record: dict
     and return type of 'None'.
     """
 
@@ -130,12 +130,10 @@ def test_update_method():
 
     # verify parameters
     signature = inspect.signature(update_method)
-    assert "query_data" in signature.parameters
-    assert "updated_data" in signature.parameters
+    assert "updated_record" in signature.parameters
 
     # verify parameter types
-    assert signature.parameters["query_data"].annotation is dict
-    assert signature.parameters["updated_data"].annotation is dict
+    assert str(signature.parameters["updated_record"].annotation) == "T"
 
     # verify method return type
     signature = inspect.signature(update_method)
