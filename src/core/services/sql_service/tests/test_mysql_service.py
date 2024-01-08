@@ -276,6 +276,10 @@ def test_create_return_none():
     DATABASE.pop()
 
 
+# constant error message
+QUERY_DATA_VALID_DICT = "'query_data' should be a valid dict."
+
+
 def test_read_single_invalid_data():
     """read_single() method should raise TypeError if 'query_data' is
     not of type dict."""
@@ -285,7 +289,7 @@ def test_read_single_invalid_data():
         sql_service.read_single("str")  # type: ignore
 
     # verify error message
-    assert "'query_data' should be a valid dict." in str(exc_info.value)
+    assert QUERY_DATA_VALID_DICT in str(exc_info.value)
 
 
 def test_read_single_return_none():
@@ -371,7 +375,7 @@ def test_read_multiple_invalid_data():
         sql_service.read_multiple(1234)  # type: ignore
 
     # verify error message
-    assert "'query_data' should be a valid dict." in str(exc_info.value)
+    assert QUERY_DATA_VALID_DICT in str(exc_info.value)
 
 
 def test_read_multiple_return_empty_list():
@@ -529,7 +533,7 @@ def test_delete_invalid_data():
         sql_service.delete(True)  # type: ignore
 
     # verify error message
-    assert "'query_data' should be a valid dict." in str(exc_info.value)
+    assert QUERY_DATA_VALID_DICT in str(exc_info.value)
 
 
 def test_delete_nothing():
