@@ -6,6 +6,9 @@ from core.services.sql_service.sql_service import SQLService
 class ProductCrudUsecase:
     """Product usecase for database CRUD operations."""
 
+    # constant error message
+    QUERY_DATA_INVALID_ERROR = "'query_data' should be a valid dict."
+
     def __init__(self, sql_service: SQLService[Product]) -> None:
         # validate sql_service
         if not isinstance(sql_service, SQLService):
@@ -52,7 +55,7 @@ class ProductCrudUsecase:
         # verify query_data type
         if not isinstance(query_data, dict):
             # raise type error
-            raise TypeError("'query_data' should be a valid dict.")
+            raise TypeError(self.QUERY_DATA_INVALID_ERROR)
 
         # read & return from sql service
         return self.__sql_service.read_single(query_data)
@@ -74,7 +77,7 @@ class ProductCrudUsecase:
         # verify query_data type
         if not isinstance(query_data, dict):
             # raise type error
-            raise TypeError("'query_data' should be a valid dict.")
+            raise TypeError(self.QUERY_DATA_INVALID_ERROR)
 
         # read & return from sql service
         return self.__sql_service.read_multiple(query_data)
@@ -118,7 +121,7 @@ class ProductCrudUsecase:
         # verify query_data type
         if not isinstance(query_data, dict):
             # raise type error
-            raise TypeError("'query_data' should be a valid dict.")
+            raise TypeError(self.QUERY_DATA_INVALID_ERROR)
 
         # delete & return from sql service
         return self.__sql_service.delete(query_data)

@@ -8,18 +8,17 @@
 ======================================= test session starts =======================================
 Python 3.12.1, pytest-7.4.4, pluggy-1.3.0
 plugins: cov-4.1.0
-collected 75 items
+collected 97 items
 
-core\services\sql_service\tests\test_mysql_service.py .........................              [ 33%]
-core\services\sql_service\tests\test_sql_exception.py ..                                     [ 36%]
-core\services\sql_service\tests\test_sql_service.py ........                                 [ 46%]
-core\tests\test_dependency_injection.py .                                                    [ 48%]
-features\product\tests\test_product_crud_usecase.py .........                                [ 60%]
-features\product\tests\test_product_model.py ..............                                  [ 78%]
+core\services\sql_service\tests\test_mysql_service.py .........................              [ 25%]
+core\services\sql_service\tests\test_sql_exception.py ..                                     [ 27%] 
+core\services\sql_service\tests\test_sql_service.py ........                                 [ 36%]
+core\tests\test_dependency_injection.py .                                                    [ 37%] 
+features\product\tests\test_product_crud_usecase.py ...............................          [ 69%]
+features\product\tests\test_product_model.py ..............                                  [ 83%]
 features\product\tests\test_product_serialization.py ................                        [100%]
 
-======================================= 75 passed in 0.38s ========================================
-
+======================================= 97 passed in 0.65s ========================================
 ```
 
 <br>
@@ -47,12 +46,12 @@ features\product\__init__.py                                0      0   100%
 features\product\models\__init__.py                         0      0   100%
 features\product\models\product.py                         26      0   100%
 features\product\tests\__init__.py                          0      0   100%
-features\product\tests\test_product_crud_usecase.py        60      0   100%
+features\product\tests\test_product_crud_usecase.py       216      0   100%
 features\product\tests\test_product_model.py               53      0   100%
 features\product\tests\test_product_serialization.py       85      0   100%
-features\product\usecases\product_crud_usecase.py          11      0   100%
+features\product\usecases\product_crud_usecase.py          29      0   100%
 ---------------------------------------------------------------------------
-TOTAL                                                     550      0   100%
+TOTAL                                                     724      0   100%
 ```
 
 <br>

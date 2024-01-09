@@ -279,6 +279,10 @@ def test_create_product_sql_service_create():
     mock.create.assert_called_once()
 
 
+# error message constant
+DUMMY_ERROR_MESSAGE = "Some database exception"
+
+
 def test_create_product_sql_exception():
     """create_product() method should raise SQLException if create() method
     of 'sql_service' raises SQLException."""
@@ -289,7 +293,7 @@ def test_create_product_sql_exception():
     product_crud_usecase = ProductCrudUsecase(mock)
 
     # create a dummy exception
-    dummy_exception = SQLException("Some database exception")
+    dummy_exception = SQLException(DUMMY_ERROR_MESSAGE)
 
     # raise exception when create method called
     mock.create.side_effect = dummy_exception
@@ -407,7 +411,7 @@ def test_get_product_sql_exception():
     product_crud_usecase = ProductCrudUsecase(mock)
 
     # create a dummy exception
-    dummy_exception = SQLException("Some database exception")
+    dummy_exception = SQLException(DUMMY_ERROR_MESSAGE)
 
     # raise exception when read_single method called
     mock.read_single.side_effect = dummy_exception
@@ -509,7 +513,7 @@ def test_get_products_sql_exception():
     product_crud_usecase = ProductCrudUsecase(mock)
 
     # create a dummy exception
-    dummy_exception = SQLException("Some database exception")
+    dummy_exception = SQLException(DUMMY_ERROR_MESSAGE)
 
     # raise exception when read_multiple method called
     mock.read_multiple.side_effect = dummy_exception
@@ -613,7 +617,7 @@ def test_update_product_sql_exception():
     product_crud_usecase = ProductCrudUsecase(mock)
 
     # create a dummy exception
-    dummy_exception = SQLException("Some database exception")
+    dummy_exception = SQLException(DUMMY_ERROR_MESSAGE)
 
     # raise exception when update method called
     mock.update.side_effect = dummy_exception
@@ -695,7 +699,7 @@ def test_delete_product_sql_exception():
     product_crud_usecase = ProductCrudUsecase(mock)
 
     # create a dummy exception
-    dummy_exception = SQLException("Some database exception")
+    dummy_exception = SQLException(DUMMY_ERROR_MESSAGE)
 
     # raise exception when delete method called
     mock.delete.side_effect = dummy_exception
